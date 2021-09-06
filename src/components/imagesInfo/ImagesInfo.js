@@ -43,7 +43,12 @@ function ImagesInfo ({requestTerm, initialImages, initialPage}) {
         setError(error);
         setStatus(Status.REJECTED);
       })
-      .finally(() => setStatus(Status.RESOLVED));
+       .finally((data) => {
+        window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+        });
+      });
   };
 
   const changePage = () => {
