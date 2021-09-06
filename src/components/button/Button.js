@@ -5,7 +5,7 @@ import s from './Button.module.css'
 
 function Button({ onClick}) {
 
-  scroll = () => {
+ const scroll = () => {
     onClick();
     scroll.scrollToBottom();
   };
