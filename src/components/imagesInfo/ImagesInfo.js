@@ -24,7 +24,7 @@ function ImagesInfo ({requestTerm, initialImages, initialPage}) {
   const [status, setStatus] = useState(Status.IDLE);
 
   const findImages = (term, requestPage, images) => {
-    setStatus(Status.PENDING);
+    
     findImagesAPI
       .fetchImage(term, requestPage)
       .then(response => {
@@ -43,7 +43,7 @@ function ImagesInfo ({requestTerm, initialImages, initialPage}) {
         setError(error);
         setStatus(Status.REJECTED);
       })
-       .finally((data) => {
+       .finally(() => {
         window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth',
@@ -60,7 +60,7 @@ function ImagesInfo ({requestTerm, initialImages, initialPage}) {
     if (!requestTerm) {
       return;
   };
-  
+  setStatus(Status.PENDING);
   findImages(requestTerm, initialPage, initialImages);
   setPage(2);
    // eslint-disable-next-line react-hooks/exhaustive-deps
